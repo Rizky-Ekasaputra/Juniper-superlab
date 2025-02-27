@@ -1,3 +1,5 @@
+// configuration for router PE-1
+
 set version 14.1R1.10
 set system host-name PE-1
 set system root-authentication encrypted-password "$1$LjgiE.XP$B/63c/lJ6fvbonB3w/TGn1"
