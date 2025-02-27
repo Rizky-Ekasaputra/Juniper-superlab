@@ -1,0 +1,12 @@
+set version 14.1R1.10
+set system host-name CORE-2
+set system root-authentication encrypted-password "$1$5qcd3GDU$1IW4xOJNZIE6BuS6mOUkM."
+set system syslog user * any emergency
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+set interfaces ge-0/0/0 unit 0 family inet address 12.12.12.1/24
+set interfaces ge-0/0/1 unit 0 family inet address 21.21.21.1/24
+set interfaces lo0 unit 0 family inet address 1.1.1.1/32
+set routing-options static route 2.2.2.2/32 next-hop 12.12.12.2
+set routing-options static route 2.2.2.2/32 qualified-next-hop 21.21.21.2 preference 6
