@@ -2,6 +2,8 @@ This lab is intended specifically for Juniper learning 📒📡
 
  ![Image](https://github.com/user-attachments/assets/cafc25ec-b41b-4edf-991a-ed2124b08974)
 
+ ![Image](https://github.com/user-attachments/assets/01f4d3de-8d2a-4d80-8d5f-1c79346e13f7)
+
 Setup Lab 
 
 Requirement Laptop or PC using 16 GB RAM, HDD storage 50 - 60GB
