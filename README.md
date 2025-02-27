@@ -4,6 +4,8 @@ This lab is intended specifically for Juniper learning 📒📡
 
 Setup Lab 
 
+Requirement Laptop or PC : requirement Laptop or PC using 16 GB RAM
+
 EVE-NG version : 6.2.0-3-Community
 
 Image          : vmx-14.1R1.10
