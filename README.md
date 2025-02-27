@@ -4,7 +4,7 @@ This lab is intended specifically for Juniper learning 📒📡
 
 Setup Lab 
 
-Requirement Laptop or PC : requirement Laptop or PC using 16 GB RAM
+Requirement Laptop or PC using 16 GB RAM, HDD storage 60GB
 
 EVE-NG version : 6.2.0-3-Community
 
