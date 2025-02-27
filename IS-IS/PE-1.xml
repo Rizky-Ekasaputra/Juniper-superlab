@@ -1,0 +1,18 @@
+set version 14.1R1.10
+set system host-name PE-1
+set system root-authentication encrypted-password "$1$9sDiFPt8$esDiJg9.vRGOvGElHew/C."
+set system login user rizky uid 2001
+set system login user rizky class super-user
+set system login user rizky authentication encrypted-password "$1$UJqOjDrE$2p/ZosamDVq22CoX.z2tq0"
+set system syslog user * any emergency
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+set interfaces ge-0/0/0 description "Link to P-1"
+set interfaces ge-0/0/0 unit 0 family inet address 10.0.11.2/30
+set interfaces ge-0/0/0 unit 0 family iso
+set interfaces lo0 unit 0 family inet address 10.0.255.2/32
+set interfaces lo0 unit 0 family iso address 49.0001.0100.0025.00
+set interfaces lo0 unit 0 family iso address 49.0010.0000.0255.0002.00
+set protocols isis interface ge-0/0/0.0 point-to-point
+set protocols isis interface lo0.0 passive
