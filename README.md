@@ -1,5 +1,7 @@
 This lab is intended specifically for Juniper learning 📒📡
 
+![Image](https://github.com/user-attachments/assets/0e0b75da-574a-4d56-b112-1f64d6b1b8d3)
+
 Setup Lab 
 
 EVE-NG version : 6.2.0-3-Community
