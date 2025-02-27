@@ -1,6 +1,6 @@
-This lab is intended specifically for Juniper learning
+This lab is intended specifically for Juniper learning 📒📡
 
-Setup Lab
+Setup Lab 
 
 EVE-NG version : 6.2.0-3-Community
 
