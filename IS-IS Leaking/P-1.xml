@@ -1,0 +1,29 @@
+set version 14.1R1.10
+set system host-name P-1
+set system root-authentication encrypted-password "$1$5jc/M65n$8hI63rxPIBbC/uEs75KU9."
+set system login user rizky uid 2001
+set system login user rizky class super-user
+set system login user rizky authentication encrypted-password "$1$ZTh/2wUX$vjKkZd9a7Dnrcsh4W6vfh0"
+set system syslog user * any emergency
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+set interfaces ge-0/0/0 description "link to PE-1"
+set interfaces ge-0/0/0 unit 0 family inet address 10.0.11.1/30
+set interfaces ge-0/0/0 unit 0 family iso
+set interfaces ge-0/0/1 description "link to P-2"
+set interfaces ge-0/0/1 unit 0 family inet address 10.0.12.1/30
+set interfaces ge-0/0/1 unit 0 family iso
+set interfaces lo0 unit 0 family inet address 10.0.255.1/32
+set interfaces lo0 unit 0 family iso address 49.0010.0000.0255.0001.00
+set protocols isis export L2_to_L1
+set protocols isis interface ge-0/0/0.0 point-to-point
+set protocols isis interface ge-0/0/0.0 level 2 disable
+set protocols isis interface ge-0/0/1.0 point-to-point
+set protocols isis interface ge-0/0/1.0 level 1 disable
+set protocols isis interface lo0.0 passive
+set policy-options policy-statement L2_to_L1 term 1 from protocol isis
+set policy-options policy-statement L2_to_L1 term 1 from level 2
+set policy-options policy-statement L2_to_L1 term 1 to protocol isis
+set policy-options policy-statement L2_to_L1 term 1 to level 1
+set policy-options policy-statement L2_to_L1 term 1 then accept
