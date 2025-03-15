@@ -1,1 +1,1 @@
-
+ini merupakan kumpulan dari lab OSPF Collaboration, jadi kita akan kupas tuntas semuanya dalam lab ini, dari mulai OSPF Single Area, Multi Area, Virtual Link dan tambahan untuk bonusnya BFD [Bidirectional Forwarding Detection] yang berfungsi sebagai pendeteksi masalah pada suatu link.
