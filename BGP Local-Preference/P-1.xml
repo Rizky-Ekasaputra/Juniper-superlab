@@ -1,0 +1,48 @@
+set version 14.1R1.10
+set system host-name P-1
+set system root-authentication encrypted-password "$1$l1/v.eHq$va87u8PxOXW2ElPUjNfux1"
+set system login user noc uid 2001
+set system login user noc class operator
+set system login user noc authentication encrypted-password "$1$xld1Dzvd$hpoZOkiUuidp2bIrdxr/F/"
+set system login user rizky uid 2002
+set system login user rizky class super-user
+set system login user rizky authentication encrypted-password "$1$tIZcegdj$jzgL36YK7XmBbCOQLlhQR/"
+set system syslog user * any emergency
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+set interfaces ge-0/0/0 description "link to PE-1"
+set interfaces ge-0/0/0 unit 0 family inet address 10.0.11.1/30
+set interfaces ge-0/0/1 description "link to P-2"
+set interfaces ge-0/0/1 unit 0 family inet address 10.0.12.1/30
+set interfaces lo0 unit 0 family inet address 10.0.255.1/32
+set routing-options autonomous-system 65001
+set protocols bgp group Internal type internal
+set protocols bgp group Internal local-address 10.0.255.1
+set protocols bgp group Internal family inet unicast
+set protocols bgp group Internal export nhs
+set protocols bgp group Internal neighbor 10.0.255.3
+set protocols bgp group External type external
+set protocols bgp group External import TAG-LOCPREF
+set protocols bgp group External family inet unicast
+set protocols bgp group External export send_direct
+set protocols bgp group External export send_ospf
+set protocols bgp group External neighbor 10.0.12.2 peer-as 65002
+set protocols ospf traffic-engineering
+set protocols ospf reference-bandwidth 10g
+set protocols ospf area 0.0.0.0 interface lo0.0 passive
+set protocols ospf area 0.0.0.0 interface ge-0/0/0.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface ge-0/0/0.0 authentication md5 1 key "$9$I0jhyeLxdgoGN-jqf5F3Sre"
+set protocols ospf area 0.0.0.0 interface ge-0/0/0.0 bfd-liveness-detection minimum-interval 300
+set protocols ospf area 0.0.0.0 interface ge-0/0/0.0 bfd-liveness-detection multiplier 3
+set protocols ospf area 0.0.0.0 interface ge-0/0/0.0 bfd-liveness-detection full-neighbors-only
+set policy-options policy-statement TAG-LOCPREF term 1 from route-filter 10.0.255.2/32 exact
+set policy-options policy-statement TAG-LOCPREF term 1 from route-filter 10.0.255.4/32 exact
+set policy-options policy-statement TAG-LOCPREF term 1 then local-preference 200
+set policy-options policy-statement TAG-LOCPREF term 1 then accept
+set policy-options policy-statement nhs then next-hop self
+set policy-options policy-statement send_direct term 1 from route-filter 10.0.11.0/30 exact
+set policy-options policy-statement send_direct term 1 from route-filter 10.0.255.1/32 exact
+set policy-options policy-statement send_direct term 1 then accept
+set policy-options policy-statement send_ospf term 1 from protocol ospf
+set policy-options policy-statement send_ospf term 1 then accept

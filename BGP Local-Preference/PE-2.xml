@@ -1,0 +1,30 @@
+set version 14.1R1.10
+set system host-name PE-2
+set system root-authentication encrypted-password "$1$TURgLi4i$asZfzdqIm6CYqaZfDb3If/"
+set system login user noc uid 2001
+set system login user noc class operator
+set system login user noc authentication encrypted-password "$1$OPZiaFuH$H18NaHaLlqQkkQzk2TjAA."
+set system login user rizky uid 2002
+set system login user rizky class super-user
+set system login user rizky authentication encrypted-password "$1$UMTv2zDo$m1SLRsndUyHPDy4CxRuUo."
+set system syslog user * any emergency
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+set interfaces ge-0/0/1 description "link to P-2"
+set interfaces ge-0/0/1 unit 0 family inet address 10.0.13.2/30
+set interfaces lo0 unit 0 family inet address 10.0.255.4/32
+set routing-options router-id 10.0.255.4
+set routing-options autonomous-system 65002
+set protocols bgp group Internal type internal
+set protocols bgp group Internal local-address 10.0.255.4
+set protocols bgp group Internal family inet unicast
+set protocols bgp group Internal neighbor 10.0.255.2
+set protocols ospf traffic-engineering
+set protocols ospf reference-bandwidth 10g
+set protocols ospf area 0.0.0.0 interface lo0.0 passive
+set protocols ospf area 0.0.0.0 interface ge-0/0/1.0 interface-type p2p
+set protocols ospf area 0.0.0.0 interface ge-0/0/1.0 authentication md5 1 key "$9$8Ifx-b4aU.PQZG39pu1INdb"
+set protocols ospf area 0.0.0.0 interface ge-0/0/1.0 bfd-liveness-detection minimum-interval 300
+set protocols ospf area 0.0.0.0 interface ge-0/0/1.0 bfd-liveness-detection multiplier 3
+set protocols ospf area 0.0.0.0 interface ge-0/0/1.0 bfd-liveness-detection full-neighbors-only
