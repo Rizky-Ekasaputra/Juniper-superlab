@@ -1,4 +1,4 @@
-This lab is intended specifically for Juniper learning 📒📡
+
 
  ![Image](https://github.com/user-attachments/assets/01f4d3de-8d2a-4d80-8d5f-1c79346e13f7)
 
